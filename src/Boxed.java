@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Rectangle;
 public class Boxed {
+    private String mode;
     private String type;
     private String color;
     private String imageFileName;
@@ -14,19 +15,19 @@ public class Boxed {
     private Rectangle cardBox;
     private boolean solved;
 
-    public Boxed(String type , String color){
-        this.type = type;
+    public Boxed(String mode , String color){
+        this.mode = mode;
         this.color = color;
-        this.imageFileName = "images/"+type+"_"+color;
-        this.solvedImageFileName = "images/"+type+"_"+color+"_open";
+        this.imageFileName = "image/"+mode+"_"+color;
+        this.solvedImageFileName = "image/_open";
         show = true;
 //        this.image = readImage();
-        this.cardBox = new Rectangle(-100,-100,image.getWidth(),image.getHeight());
+//        this.cardBox = new Rectangle(-100,-100,image.getWidth(),image.getHeight());
         this.solved = false;
 
     }
 
-    public String getType() {return type;}
+    public String getMode() {return mode;}
 
     public String getColor() {
         return color;
@@ -48,9 +49,6 @@ public class Boxed {
         return show;
     }
 
-    public BufferedImage getImage() {
-        return image;
-    }
 
     public Rectangle getCardBox() {
         return cardBox;
@@ -60,7 +58,7 @@ public class Boxed {
         return solved;
     }
 
-    public BufferedImage readImage() {
+    public BufferedImage image() {
         try {
             BufferedImage image;
             if (show) {
@@ -78,16 +76,16 @@ public class Boxed {
     }
     public static ArrayList<Boxed> getBox() {
         ArrayList<Boxed> box = new ArrayList<Boxed>();
-        String [] type = {"empty","music","wallpaper","themes","game"};
+//        String [] type = {"empty","music","wallpaper","themes","game"};
         String [] color = {"red", "yellow", "green", "blue", "purple", "black"};
-        for (String content :type){
+//        for (String content :type){
                 for (String c : color){
                     for (int t = 0; t < 2; t++){
-                    Boxed b = new Boxed(content, color[t]);
+                    Boxed b = new Boxed("easy", color[t]);
                     box.add(b);
+                    System.out.println(b);
                 }
             }
-        }
 
         return box;
     }
