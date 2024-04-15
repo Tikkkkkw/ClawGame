@@ -7,7 +7,7 @@ public class GameMode {
     ArrayList<String> boxLock;
 
     public GameMode(boolean mode){
-        // This sets the game mode ...
+        this.mode = mode;
     }
 
 }
