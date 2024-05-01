@@ -36,26 +36,22 @@ class DrawPanel extends JPanel implements MouseListener {
         if (introScreen) {
             drawIntroScreen();
 
-        } else if (gameScreen) {
+        }
+        if (gameScreen) {
             // get claw and boxes sprite to be printed.
             removeIntro();
-
-
         }
-
     }
 
     private void drawIntroScreen() {
         easy();
-        medium();
-        hard();
+//        medium();
+//        hard();
     }
 
     private void removeIntro() {
-
-        easy.setVisible(false);
-        medium.setVisible(false);
-        hard.setVisible(false);
+        introScreen = false;
+        easy.setText("");
         TA.closeInto();
     }
 
@@ -66,7 +62,6 @@ class DrawPanel extends JPanel implements MouseListener {
 // left
         if (e.getButton() == 1) {
        {
-
             }
             if (detectRectangle(backpack, clicked)) {
                 System.out.println("backpack opening");
@@ -85,29 +80,31 @@ class DrawPanel extends JPanel implements MouseListener {
         }
 // right
         if (e.getButton() == 3) {
-            System.out.println("STOP YELLING AT ME");
+            System.out.println("BUTTON OFF?");
+            gameScreen = true;
+
         }
     }
 
     public void easy() {
 
-        easy = new JButton(TA.easy());
+        easy = new JButton("easy");
         easy.setBounds(115, 161, 225, 50);
         this.add(easy);
 
     }
 
-    public void medium() {
-        medium = new JButton(TA.medium());
-        medium.setBounds(115, 286, 225, 50);
-        this.add(medium);
-    }
-
-    public void hard() {
-        hard = new JButton(TA.hard());
-        hard.setBounds(115, 411, 225, 50);
-        this.add(hard);
-    }
+//    public void medium() {
+//        medium = new JButton(TA.medium());
+//        medium.setBounds(115, 286, 225, 50);
+//        this.add(medium);
+//    }
+//
+//    public void hard() {
+//        hard = new JButton(TA.hard());
+//        hard.setBounds(115, 411, 225, 50);
+//        this.add(hard);
+//    }
 
     public void startingScreen(Graphics g) {
         g.drawString("B", backpack.x+10, 50);
@@ -145,4 +142,11 @@ class DrawPanel extends JPanel implements MouseListener {
     public boolean detectRectangle(Rectangle r, Point mouse) {
         return (mouse.x >= r.x && mouse.x <= r.x + r.width) && (mouse.y >= r.y && mouse.y <= r.y + r.height);
     }
+
+    public boolean detectClicked(Button b, MouseEvent e) {
+        return false;
+
+    }
+
+
 }

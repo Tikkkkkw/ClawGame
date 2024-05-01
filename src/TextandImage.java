@@ -6,25 +6,24 @@ public class TextandImage{
     private JLabel medium = new JLabel("medium");
     private JLabel hard = new JLabel("hard");
 
-    public String easy() {
-        return easy.getText();
+    public JLabel easy() {return easy;
     }
 
 
-    public String medium() {
-        return medium.getText();
-    }
-
-
-    public String hard() {
-        return hard.getText();
-    }
+//    public JLabel medium() {
+//        return medium;
+//    }
+//
+//
+//    public JLabel hard() {
+//        return hard;
+//    }
 
 
     public void closeInto(){
-        easy = null;
-        medium = null;
-        hard = null;
+        easy = new JLabel("");
+        medium = new JLabel("");
+        hard = new JLabel("");
     }
 
 
