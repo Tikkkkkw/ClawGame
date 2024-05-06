@@ -11,10 +11,15 @@ class DrawPanel extends JPanel implements MouseListener {
     private boolean introScreen;
     private boolean gameScreen;
     private final JButton easy = new JButton("easy" );
-    //    private JButton medium = new JButton("medium");
-//    private JButton hard = new JButton("hard");
+    private JButton medium = new JButton("medium");
+    private JButton hard = new JButton("hard");
     private final GameMode GM = new GameMode();
     private final TextandImage TA = new TextandImage();
+    private Font CourierNew = new Font("Courier New", Font.BOLD, 45);
+    private Font ComicSans = new Font("Comic Sans MS",Font.BOLD, 74);
+
+
+
 
 
     public DrawPanel() {
@@ -23,12 +28,12 @@ class DrawPanel extends JPanel implements MouseListener {
         gameScreen = false;
 
 
+
     }
 
 
     protected void paintComponent(Graphics g) {
-        g.setFont(new Font("Courier New", Font.BOLD, 45));
-
+        g.setFont(ComicSans);
 
         startingScreen(g);
 
@@ -51,6 +56,8 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
         easy();
+        medium();
+        hard();
         gameScreen = false;
     }
 
@@ -101,15 +108,14 @@ class DrawPanel extends JPanel implements MouseListener {
         System.out.println("achivement opened");
     }
 
-
     public void sound(){
         System.out.println("sound opened");
     }
 
-
     public void setting(){
         System.out.println("setting opened");
     }
+
     public void backpack(){
         System.out.println("backpack opened");
     }
@@ -121,34 +127,30 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
         //Code for one of the buttons.
-        easy.setBounds(115, 161, 225, 50);
+        easy.setBounds(250, 200, 335, 80);
         easy.addMouseListener(this);
         this.add(easy);
 
+    }
 
+    public void medium() {
+        medium.setBounds(250, 400, 335, 80);
+        medium.addMouseListener(this);
+        this.add(medium);
+    }
 
-
+    public void hard() {
+        hard.setBounds(250, 600, 335, 80);
+        hard.addMouseListener(this);
+        this.add(hard);
     }
 
 
-//    public void medium() {
-//        medium = new JButton(TA.medium());
-//        medium.setBounds(115, 286, 225, 50);
-//        this.add(medium);
-//    }
-//
-//    public void hard() {
-//        hard = new JButton(TA.hard());
-//        hard.setBounds(115, 411, 225, 50);
-//        this.add(hard);
-//    }
-
-
     public void startingScreen(Graphics g) {
-        g.drawString("B", 30, 50);
-        g.drawString("A", 90, 50);
-        g.drawString("L", 865, 50);
-        g.drawString("S", 925, 50);
+        g.drawString("B", 45, 90); //backpack
+        g.drawString("A", 160, 90);//achivement
+        g.drawString("L",1720, 90);//loudness
+        g.drawString("S", 1820, 90);//setting
         draw(TA.backpack(), g);
         draw(TA.achievement(), g);
         draw(TA.setting(), g);
