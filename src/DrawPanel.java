@@ -11,8 +11,11 @@ class DrawPanel extends JPanel implements MouseListener {
     private boolean introScreen;
     private boolean gameScreen;
     private final JButton easy = new JButton("easy" );
-    private JButton medium = new JButton("medium");
-    private JButton hard = new JButton("hard");
+    private final JButton medium = new JButton("medium");
+    private final JButton hard = new JButton("hard");
+    private boolean IDEasy;
+    private boolean IDMedium;
+    private boolean IDHard;
     private final GameMode GM = new GameMode();
     private final TextandImage TA = new TextandImage();
     private Font CourierNew = new Font("Courier New", Font.BOLD, 45);
@@ -26,8 +29,6 @@ class DrawPanel extends JPanel implements MouseListener {
         this.addMouseListener(this);
         introScreen = true;
         gameScreen = false;
-
-
 
     }
 
@@ -58,7 +59,9 @@ class DrawPanel extends JPanel implements MouseListener {
         easy();
         medium();
         hard();
-        gameScreen = false;
+        IDEasy = false;
+        IDMedium = false;
+        IDHard = false;
     }
 
 
@@ -70,10 +73,7 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
     public void mouseClicked(MouseEvent c) {
-
-
-        Point click = c.getPoint();
-
+        Point click = c.getLocationOnScreen();
 
 // left
         if (c.getButton() == 1) {
@@ -99,7 +99,6 @@ class DrawPanel extends JPanel implements MouseListener {
         if (c.getButton() == 3) {
             System.out.println("right click at " +click);
 
-
         }
     }
 
@@ -124,8 +123,6 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
     public void easy() {
-
-
         //Code for one of the buttons.
         easy.setBounds(250, 200, 335, 80);
         easy.addMouseListener(this);
@@ -163,7 +160,17 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
     public void mouseEntered(MouseEvent en) {
+
+        Point point = en.getLocationOnScreen();
+
+        if (easy.contains(point)) {
+            IDEasy = true;
+            System.out.println("TESTING");
+        }
     }
+
+
+
 
 
     public void mouseExited(MouseEvent ex) {
@@ -175,12 +182,14 @@ class DrawPanel extends JPanel implements MouseListener {
     public void mousePressed(MouseEvent p) {
 
 
-
-
         if ((p.getButton() == 3))  {
-            easy.isSelected();
-            System.out.println( "Easy pressed");
-            easy.setText("");
+            if (IDEasy) {
+//                easy.isSelected();
+                System.out.println("Easy pressed");
+                easy.setText("");
+                GM.setEasy();
+            }
+
         }
 
 

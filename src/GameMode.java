@@ -3,12 +3,12 @@ import java.util.ArrayList;
 public class GameMode {
     String mode;
 
-    boolean easy;
-    boolean medium;
-    boolean hard;
-    boolean pickedup;
-    boolean solved;
-    ArrayList<String> boxLock;
+    private boolean easy;
+    private boolean medium;
+    private boolean hard;
+    private boolean pickedup;
+    private boolean solved;
+    private ArrayList<String> boxLock;
 
    public GameMode(){
    }
