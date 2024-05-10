@@ -1,4 +1,5 @@
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
 import java.awt.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -20,6 +21,7 @@ public class TextandImage{
     private JLabel hard = new JLabel("hard");
 
 
+
     public JLabel easy() {return easy;
     }
     public TextandImage() {
@@ -30,7 +32,6 @@ public class TextandImage{
         Setting = new Rectangle(1700,  y, length,length);
 
         this.imageFileName = "image/claw";
-
     }
 
 
