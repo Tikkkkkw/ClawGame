@@ -95,7 +95,7 @@ public class Boxed {
         ArrayList<Boxed> box = new ArrayList<Boxed>();
         String [] type = {"empty","music","wallpaper","themes","game", "lore"};
         String [] color = {"red", "yellow", "green", "blue", "purple", "black"};
-        for (int t = 0; t < color.length; t++){
+        for (int t =  0; t < color.length; t++){
             Boxed b = new Boxed("easy", color[t], type[t] );
             box.add(b);
         }

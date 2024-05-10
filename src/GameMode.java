@@ -7,7 +7,7 @@ public class GameMode {
     private boolean medium;
     private boolean hard;
     private boolean pickedup;
-    private boolean solved;
+    private boolean solved ;
     private ArrayList<String> boxLock;
 
    public GameMode(){
