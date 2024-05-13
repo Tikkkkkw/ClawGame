@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
@@ -11,18 +9,18 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
     private boolean introScreen;
-    private boolean gameScreen;
+    private final boolean gameScreen;
     private final JButton easy = new JButton("easy" );
     private final JButton medium = new JButton("medium");
     private final JButton hard = new JButton("hard");
     private boolean IDEasy;
     private boolean IDMedium;
     private boolean IDHard;
-    private ActionListener what;
+//    private ActionListener what;
     private final GameMode GM = new GameMode();
     private final TextandImage TA = new TextandImage();
-    private Font CourierNew = new Font("Courier New", Font.BOLD, 45);
-    private Font ComicSans = new Font("Comic Sans MS",Font.BOLD, 74);
+//    private final Font CourierNew = new Font("Courier New", Font.BOLD, 45);
+    private final Font ComicSans = new Font("Comic Sans MS",Font.BOLD, 74);
 
 
 
@@ -76,7 +74,7 @@ class DrawPanel extends JPanel implements MouseListener {
 // left
         if (c.getButton() == 1) {
             {
-//                System.out.println("left click at " + click);
+                System.out.println("left click at " + click);
             }
             if (detectRectangle(TA.backpack(), click)) {
                 backpack();
@@ -95,7 +93,7 @@ class DrawPanel extends JPanel implements MouseListener {
         }
 // right
         if (c.getButton() == 3) {
-//            System.out.println("right click at " +click);
+            System.out.println("right click at " +click);
 
         }
     }
@@ -124,7 +122,7 @@ class DrawPanel extends JPanel implements MouseListener {
         //Code for one of the buttons.
         easy.setBounds(250, 200, 335, 80);
         easy.addMouseListener(this);
-        easy.addActionListener(what);
+//        easy.addActionListener(what);
         this.add(easy);
 
     }
@@ -142,9 +140,9 @@ class DrawPanel extends JPanel implements MouseListener {
     }
 
 
-    public void actionPerformed(ActionEvent ac){
-        System.out.println("clicked");
-    }
+//    public void actionPerformed(MouseEvent ac){
+//        System.out.println("clicked");
+//    }
 
     public void startingScreen(Graphics g) {
         g.drawString("B", 45, 90); //backpack
@@ -164,27 +162,28 @@ class DrawPanel extends JPanel implements MouseListener {
 
     public void mouseEntered(MouseEvent en) {
 
-        Point point = en.getLocationOnScreen();
+//        Point p = en.getLocationOnScreen();
+//        actionPerformed(en);
 
             IDEasy = true;
             System.out.println("Mouse IN");
         if(IDEasy){
-            System.out.println("easy");
+            System.out.println("in");
         }
     }
-
 
 
     public void mouseExited(MouseEvent ex) {
 
+
+
         IDEasy = false;
         System.out.println("Mouse OUT");
-        if(IDEasy){
-            System.out.println("easy");
+        if(!IDEasy){
+            System.out.println("out");
         }
 
     }
-
 
     public void mousePressed(MouseEvent p) {
 
@@ -195,6 +194,16 @@ class DrawPanel extends JPanel implements MouseListener {
                 System.out.println("Easy pressed");
                 easy.setText("");
                 GM.setEasy();
+            }
+            if (IDMedium) {
+                System.out.println("Medium pressed");
+                medium.setText("");
+                GM.setMedium();
+            }
+            if (IDHard) {
+                System.out.println("Hard pressed");
+                hard.setText("");
+                GM.setHard();
             }
         }
 
@@ -216,15 +225,14 @@ class DrawPanel extends JPanel implements MouseListener {
         return (mouse.x >= r.x && mouse.x <= r.x + r.width) && (mouse.y >= r.y && mouse.y <= r.y + r.height);
     }
 
-
-    public boolean detectClicked(JButton b, Point e) {
-
-
-        if((b.getWidth() >= e.x && b.getWidth() <= e.x) && (b.getHeight() >= e.y && b.getHeight() <= e.y)){
-            return true;
-        }
-        return false;
-    }
+// well, this didn't work.
+//    public boolean detectClicked(JButton b, Point e) {
+//
+//        if((b.getWidth() >= e.x && b.getWidth() <= e.x) && (b.getHeight() >= e.y && b.getHeight() <= e.y)){
+//            return true;
+//        }
+//        return false;
+//    }
 
 
 
