@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class GameMode {
     String mode;
-
     private boolean easy;
     private boolean medium;
     private boolean hard;
@@ -24,6 +23,7 @@ public class GameMode {
         medium = false;
         hard = false;
         System.out.println("Game set to easy");
+        mode = "easy";
     }
 
     public void setMedium() {
@@ -31,6 +31,7 @@ public class GameMode {
         easy = false;
         hard = false;
         System.out.println("Game set to medium");
+        mode = "medium";
     }
 
     public void setHard() {
@@ -38,6 +39,7 @@ public class GameMode {
         easy = false;
         medium = false;
         System.out.println("Game set to hard");
+        mode = "hard";
     }
 
 

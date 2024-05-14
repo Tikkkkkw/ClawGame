@@ -111,13 +111,8 @@ public class Boxed {
     // All working for easy, the easy boxes have their content set. An box class maybe be added with booleans to keep track of the contents -  to represent different part of the game play.
     public String toString(){
 
-
-
-
         return mode + " " + type + " " + color+ "\n"+
                 imageFileName+"\n";
-
-
     }
 
 

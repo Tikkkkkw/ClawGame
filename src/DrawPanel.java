@@ -7,49 +7,47 @@ import javax.swing.JButton;
 
 class DrawPanel extends JPanel implements MouseListener {
 
-
     private boolean introScreen;
-    private final boolean gameScreen;
     private final JButton easy = new JButton("easy" );
     private final JButton medium = new JButton("medium");
     private final JButton hard = new JButton("hard");
     private boolean IDEasy;
     private boolean IDMedium;
     private boolean IDHard;
-//    private ActionListener what;
     private final GameMode GM = new GameMode();
     private final TextandImage TA = new TextandImage();
 //    private final Font CourierNew = new Font("Courier New", Font.BOLD, 45);
     private final Font ComicSans = new Font("Comic Sans MS",Font.BOLD, 74);
 
 
-
-
-
     public DrawPanel() {
         this.addMouseListener(this);
         introScreen = true;
-        gameScreen = false;
-
     }
 
 
     protected void paintComponent(Graphics g) {
         g.setFont(ComicSans);
-
         startingScreen(g);
-
 
         if (introScreen) {
             drawIntroScreen();
         }
-
-        if (gameScreen) {
-            // get claw and boxes sprite to be printed.\
+        else {
             removeIntro();
         }
     }
 
+    public void startingScreen(Graphics g) {
+        g.drawString("B", 45, 90); //backpack
+        g.drawString("A", 160, 90);//achievement
+        g.drawString("L",1720, 90);//loudness
+        g.drawString("S", 1820, 90);//setting
+        draw(TA.backpack(), g);
+        draw(TA.achievement(), g);
+        draw(TA.setting(), g);
+        draw(TA.sound(), g);
+    }
 
     private void drawIntroScreen() {
         easy();
@@ -60,21 +58,20 @@ class DrawPanel extends JPanel implements MouseListener {
         IDHard = false;
     }
 
-
     private void removeIntro() {
         introScreen = false;
-        easy.setText("");
+        easy.setVisible(false);
+        medium.setVisible(false);
+        hard.setVisible(false);
         TA.closeInto();
     }
 
-
     public void mouseClicked(MouseEvent c) {
         Point click = c.getLocationOnScreen();
-
 // left
         if (c.getButton() == 1) {
             {
-                System.out.println("left click at " + click);
+                System.out.println("left  click at " + click);
             }
             if (detectRectangle(TA.backpack(), click)) {
                 backpack();
@@ -89,12 +86,11 @@ class DrawPanel extends JPanel implements MouseListener {
                 setting();
             }
 
-
         }
 // right
         if (c.getButton() == 3) {
-            System.out.println("right click at " +click);
-
+            System.out.println("Right click at " +click);
+            this.repaint();
         }
     }
 
@@ -117,6 +113,38 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
 
+    public void mouseReleased(MouseEvent r) {
+    }
+
+    public void mouseEntered(MouseEvent en) {
+            System.out.println("Mouse IN");
+    }
+
+    public void mouseExited(MouseEvent ex) {
+        System.out.println("Mouse OUT");
+    }
+
+    public void mousePressed(MouseEvent p) {
+        if ((p.getButton() == 3))  {
+            introScreen = false;
+
+            if (IDEasy) {
+                System.out.println("Easy pressed");
+                easy.setText("");
+                GM.setEasy();
+            }
+            if (IDMedium) {
+                System.out.println("Medium pressed");
+                medium.setText("");
+                GM.setMedium();
+            }
+            if (IDHard) {
+                System.out.println("Hard pressed");
+                hard.setText("");
+                GM.setHard();
+            }
+        }
+    }
 
     public void easy() {
         //Code for one of the buttons.
@@ -140,78 +168,6 @@ class DrawPanel extends JPanel implements MouseListener {
     }
 
 
-//    public void actionPerformed(MouseEvent ac){
-//        System.out.println("clicked");
-//    }
-
-    public void startingScreen(Graphics g) {
-        g.drawString("B", 45, 90); //backpack
-        g.drawString("A", 160, 90);//achievement
-        g.drawString("L",1720, 90);//loudness
-        g.drawString("S", 1820, 90);//setting
-        draw(TA.backpack(), g);
-        draw(TA.achievement(), g);
-        draw(TA.setting(), g);
-        draw(TA.sound(), g);
-    }
-
-
-    public void mouseReleased(MouseEvent r) {
-    }
-
-
-    public void mouseEntered(MouseEvent en) {
-
-//        Point p = en.getLocationOnScreen();
-//        actionPerformed(en);
-
-            IDEasy = true;
-            System.out.println("Mouse IN");
-        if(IDEasy){
-            System.out.println("in");
-        }
-    }
-
-
-    public void mouseExited(MouseEvent ex) {
-
-
-
-        IDEasy = false;
-        System.out.println("Mouse OUT");
-        if(!IDEasy){
-            System.out.println("out");
-        }
-
-    }
-
-    public void mousePressed(MouseEvent p) {
-
-
-        if ((p.getButton() == 3))  {
-
-            if (IDEasy) {
-                System.out.println("Easy pressed");
-                easy.setText("");
-                GM.setEasy();
-            }
-            if (IDMedium) {
-                System.out.println("Medium pressed");
-                medium.setText("");
-                GM.setMedium();
-            }
-            if (IDHard) {
-                System.out.println("Hard pressed");
-                hard.setText("");
-                GM.setHard();
-            }
-        }
-
-    }
-
-
-
-
     //    TO MAKE MY LIFE WAY EASIER
     public void draw(Rectangle r, Graphics g) {
         int x = (int) r.getX();
@@ -224,18 +180,5 @@ class DrawPanel extends JPanel implements MouseListener {
     public boolean detectRectangle(Rectangle r, Point mouse) {
         return (mouse.x >= r.x && mouse.x <= r.x + r.width) && (mouse.y >= r.y && mouse.y <= r.y + r.height);
     }
-
-// well, this didn't work.
-//    public boolean detectClicked(JButton b, Point e) {
-//
-//        if((b.getWidth() >= e.x && b.getWidth() <= e.x) && (b.getHeight() >= e.y && b.getHeight() <= e.y)){
-//            return true;
-//        }
-//        return false;
-//    }
-
-
-
-
 
 }
