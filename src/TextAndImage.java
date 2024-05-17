@@ -1,14 +1,12 @@
 import javax.swing.JLabel;
-import java.awt.event.ActionListener;
 import java.awt.*;
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-public class TextandImage{
-    private final Rectangle Backpack;
-    private final Rectangle Achievement;
-    private final Rectangle Setting;
-    private final Rectangle Sound;
+public class TextAndImage {
+    private Rectangle Backpack;
+    private Rectangle Achievement;
+    private Rectangle Setting;
+    private Rectangle Sound;
     private String imageFileName;
     private BufferedImage image;
 
@@ -17,7 +15,7 @@ public class TextandImage{
     private JLabel hard = new JLabel("hard");
 
 
-    public TextandImage() {
+    public TextAndImage() {
 
         int y = 20;
         int length = 80;
@@ -28,7 +26,6 @@ public class TextandImage{
 
         this.imageFileName = "image/claw";
     }
-
 
 
     public Rectangle backpack() {

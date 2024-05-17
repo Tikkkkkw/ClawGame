@@ -1,21 +1,30 @@
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class Claw {
     private String imageFileName;
-    private Image Image;
+    private BufferedImage image;
+
     public Claw(){
-        imageFileName = "image/claw.jpg";
-        Image = new ImageIcon(imageFileName).getImage();
-        label();
+        imageFileName = "image/claw";
+        image = claw(imageFileName);
     }
-    public Image label(){
-        return Image;
+    public BufferedImage claw (String imageFileName){
+        try{
+            BufferedImage i;
+            i = ImageIO.read(new File(imageFileName));
+            return i;
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    public BufferedImage getImage(){
+        return image;
     }
 
-    }
+
+}
 

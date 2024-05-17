@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 public class MainFrame extends JFrame implements Runnable {
 
     private DrawPanel p;
-    private modePanel mode;
+//    private modePanel mode;
     private Thread windowThread;
 
     public MainFrame(String display) {
@@ -12,10 +12,10 @@ public class MainFrame extends JFrame implements Runnable {
         int frameHeight = getMaximumSize().height;
         p = new DrawPanel();
         this.add(p);
-        if (!DrawPanel.intro()) {
-        mode = new modePanel();
-        this.add(mode);
-        }
+//        if (!DrawPanel.intro()) {
+//        mode = new modePanel();
+//        this.add(mode);
+//        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
         this.setLocation(0, 0);

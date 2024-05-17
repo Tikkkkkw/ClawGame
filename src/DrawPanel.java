@@ -10,13 +10,12 @@ class DrawPanel extends JPanel implements MouseListener {
     private final JButton easy = new JButton("easy" );
     private final JButton medium = new JButton("medium");
     private final JButton hard = new JButton("hard");
-    private boolean IDEasy;
-    private boolean IDMedium;
-    private boolean IDHard;
+    private boolean IDEasy, IDMedium, IDHard;
     private final GameMode GM = new GameMode();
-    private final TextandImage TA = new TextandImage();
+    private final TextAndImage TA = new TextAndImage();
 //    private final Font CourierNew = new Font("Courier New", Font.BOLD, 45);
     private final Font ComicSans = new Font("Comic Sans MS",Font.BOLD, 74);
+
 
 
     public DrawPanel() {
@@ -33,6 +32,7 @@ class DrawPanel extends JPanel implements MouseListener {
         }
         else {
             removeIntro();
+            ModePanel MP = new ModePanel(GM.getMode());
         }
     }
 
@@ -62,7 +62,10 @@ class DrawPanel extends JPanel implements MouseListener {
         medium.setVisible(false);
         hard.setVisible(false);
         TA.closeInto();
+
     }
+
+
 
     public void mouseClicked(MouseEvent c) {
         PointerInfo info = MouseInfo.getPointerInfo();

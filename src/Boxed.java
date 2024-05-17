@@ -34,6 +34,10 @@ public class Boxed {
 
     }
 
+    public Boxed() {
+
+    }
+
 
     public String getMode() {return mode;}
 

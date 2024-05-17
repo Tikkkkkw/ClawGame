@@ -1,4 +1,5 @@
-public class miniGame {
+public class MiniGames {
+
 
 }
 

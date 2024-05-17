@@ -5,13 +5,12 @@ public class GameMode {
     private boolean easy;
     private boolean medium;
     private boolean hard;
-    private boolean pickedup;
+    private boolean picked;
     private boolean solved ;
     private ArrayList<String> boxLock;
 
    public GameMode(){
    }
-
     public String getMode() {
         return mode;
     }
@@ -45,11 +44,11 @@ public class GameMode {
 
 
     public boolean isPickedup() {
-        return pickedup;
+        return picked;
     }
 
     public void setPickedup(boolean pickedup) {
-        this.pickedup = pickedup;
+        this.picked = pickedup;
     }
 
     public boolean isSolved() {

@@ -4,27 +4,28 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-
-class modePanel extends JPanel implements KeyListener {
+class ModePanel extends JPanel implements KeyListener {
 
 
     private final ArrayList<Boxed> b = Boxed.getBox();
     private Claw claw;
     private Boxed box;
-    private final String easy = "easy";
-    public modePanel(){
+    private String mode;
+    public ModePanel(String mode) {
+        this.mode = mode;
         claw = new Claw();
         Boxed.getBox();
-
     }
 
-    public void print(Graphics g){
-        g.drawImage(claw.label(),19, 10, null);
-
+    private void aClaw(){
+        Graphics gr = claw.getImage().getGraphics();
+        print(gr);
     }
 
+    public void returnBox(){
+        System.out.println(b);
 
-
+    }
     public void keyTyped(KeyEvent e) {
     }
 
@@ -33,9 +34,6 @@ class modePanel extends JPanel implements KeyListener {
 
     public void keyReleased(KeyEvent e) {
     }
-    public void returnBox(){
-        System.out.println(b);
 
-    }
 
 }
