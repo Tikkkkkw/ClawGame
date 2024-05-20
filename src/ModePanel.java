@@ -7,14 +7,14 @@ import java.util.ArrayList;
 class ModePanel extends JPanel implements KeyListener {
 
 
-    private final ArrayList<Boxed> b = Boxed.getBox();
+    private ArrayList<Boxed> b;
     private Claw claw;
     private Boxed box;
     private String mode;
     public ModePanel(String mode) {
-        this.mode = mode;
-        claw = new Claw();
-        Boxed.getBox();
+//        this.mode = mode;
+//        claw = new Claw();
+//        b = Boxed.getBox();
     }
 
     private void aClaw(){

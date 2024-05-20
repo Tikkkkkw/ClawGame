@@ -103,9 +103,9 @@ public class Boxed {
             Boxed b = new Boxed("easy", color[t], type[t] );
             box.add(b);
         }
-        for (Boxed b: box){
-            System.out.println(b);
-        }
+//        for (Boxed b: box){
+//            System.out.println(b);
+//        }
         return box;
 
 

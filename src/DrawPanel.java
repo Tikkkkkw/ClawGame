@@ -1,19 +1,23 @@
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 import javax.swing.*;
 import javax.swing.JButton;
 
 class DrawPanel extends JPanel implements MouseListener {
 
     private static boolean introScreen;
+    private boolean check;
     private final JButton easy = new JButton("easy" );
     private final JButton medium = new JButton("medium");
     private final JButton hard = new JButton("hard");
     private boolean IDEasy, IDMedium, IDHard;
     private final GameMode GM = new GameMode();
     private final TextAndImage TA = new TextAndImage();
-//    private final Font CourierNew = new Font("Courier New", Font.BOLD, 45);
+    private Point mousePoint;
+    private final Font CourierNew = new Font("Courier New", Font.BOLD, 45);
     private final Font ComicSans = new Font("Comic Sans MS",Font.BOLD, 74);
 
 
@@ -68,31 +72,32 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
     public void mouseClicked(MouseEvent c) {
-        PointerInfo info = MouseInfo.getPointerInfo();
-        Point click = info.getLocation();
-
+        mousePoint = c.getPoint();
+        Point info = mousePoint;
 // left
         if (c.getButton() == 1) {
             {
-                System.out.println("left  click at " + c.getPoint());
+                System.out.println("left  click at " + info);
             }
-            if (detectRectangle(TA.backpack(), c.getPoint())) {
-                backpack();
+            if (detectRectangle(TA.backpack(), info)) {
+                backpack(getGraphics(), true);
+                Rectangle b = new Rectangle(500, 300, 30, 20);
+                check = !detectRectangle(b, info);
             }
-            if (detectRectangle(TA.achievement(), c.getPoint())) {
+            if (detectRectangle(TA.achievement(), info)) {
                 achievement();
             }
-            if (detectRectangle(TA.sound(), c.getPoint())) {
+            if (detectRectangle(TA.sound(), info)) {
                 sound();
             }
-            if (detectRectangle(TA.setting(), c.getPoint())) {
+            if (detectRectangle(TA.setting(),info)) {
                 setting();
             }
 
         }
 // right
         if (c.getButton() == 3) {
-            System.out.println("Right click at " +c.getPoint());
+            System.out.println("Right click at " + info);
             this.repaint();
         }
     }
@@ -110,8 +115,20 @@ class DrawPanel extends JPanel implements MouseListener {
         System.out.println("setting opened");
     }
 
-    public void backpack(){
-        System.out.println("backpack opened");
+    public void backpack(Graphics a, boolean t){
+        while (t) {
+            a.fillRect(30, 20, 500, 300);
+            a.setColor(Color.LIGHT_GRAY);
+            a.getClipBounds();
+            a.setFont(CourierNew);
+            a.drawString("Backpack",220,100);
+            System.out.println("backpack");
+
+            if (check){
+                t = false;
+            }
+        }
+
     }
 
 
@@ -185,6 +202,9 @@ class DrawPanel extends JPanel implements MouseListener {
     public boolean detectRectangle(Rectangle r, Point mouse) {
         return (mouse.x >= r.x && mouse.x <= r.x + r.width) && (mouse.y >= r.y && mouse.y <= r.y + r.height);
     }
+
+
+
 //    private PointerInfo pointer(MouseEvent e){
 //        return MouseInfo.getPointerInfo();
 //    }

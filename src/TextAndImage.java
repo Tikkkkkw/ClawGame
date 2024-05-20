@@ -42,6 +42,11 @@ public class TextAndImage {
     }
 
 
+
+//    public Rectangle close()
+
+
+
     public void closeInto(){
         easy = new JLabel("");
         medium = new JLabel("");
