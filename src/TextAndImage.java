@@ -1,4 +1,4 @@
-import javax.swing.JLabel;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -7,12 +7,12 @@ public class TextAndImage {
     private Rectangle Achievement;
     private Rectangle Setting;
     private Rectangle Sound;
+    private final JButton easy = new JButton("easy" );
+    private final JButton medium = new JButton("medium");
+    private final JButton hard = new JButton("hard");
     private String imageFileName;
     private BufferedImage image;
 
-    private JLabel easy = new JLabel("easy");
-    private JLabel medium = new JLabel("medium");
-    private JLabel hard = new JLabel("hard");
 
 
     public TextAndImage() {
@@ -26,7 +26,20 @@ public class TextAndImage {
 
         this.imageFileName = "image/claw";
     }
+    public JButton getEasy() {
+        easy.setBounds(250, 200, 335, 80);
+        return easy;
+    }
 
+    public JButton getMedium() {
+        medium.setBounds(250, 400, 335, 80);
+        return medium;
+    }
+
+    public JButton getHard() {
+        hard.setBounds(250, 600, 335, 80);
+        return hard;
+    }
 
     public Rectangle backpack() {
         return Backpack;
@@ -40,17 +53,16 @@ public class TextAndImage {
     public Rectangle setting() {
         return Setting;
     }
-
-
-
 //    public Rectangle close()
 
 
-
     public void closeInto(){
-        easy = new JLabel("");
-        medium = new JLabel("");
-        hard = new JLabel("");
+        easy.setText("");
+        medium.setText("");
+        hard.setText("");
+        easy.setVisible(false);
+        medium.setVisible(false);
+        hard.setVisible(false);
     }
 
 

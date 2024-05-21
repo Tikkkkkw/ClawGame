@@ -11,8 +11,8 @@ class ModePanel extends JPanel implements KeyListener {
     private Claw claw;
     private Boxed box;
     private String mode;
-    public ModePanel(String mode) {
-//        this.mode = mode;
+    public ModePanel() {
+         mode = GameMode.getMode();
 //        claw = new Claw();
 //        b = Boxed.getBox();
     }

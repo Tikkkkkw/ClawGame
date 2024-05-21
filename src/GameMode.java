@@ -1,17 +1,15 @@
 import java.util.ArrayList;
 
 public class GameMode {
-    String mode;
+    private static String mode;
     private boolean easy;
     private boolean medium;
     private boolean hard;
     private boolean picked;
     private boolean solved ;
     private ArrayList<String> boxLock;
-
-   public GameMode(){
-   }
-    public String getMode() {
+    public GameMode(){}
+    public static String getMode() {
         return mode;
     }
 
@@ -40,8 +38,6 @@ public class GameMode {
         System.out.println("Game set to hard");
         mode = "hard";
     }
-
-
 
     public boolean isPickedup() {
         return picked;

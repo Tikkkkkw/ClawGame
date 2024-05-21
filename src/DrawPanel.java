@@ -1,32 +1,22 @@
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 import javax.swing.*;
-import javax.swing.JButton;
 
 class DrawPanel extends JPanel implements MouseListener {
-
+//  Only for the relationship and interaction of Things.
     private static boolean introScreen;
-    private boolean check;
-    private final JButton easy = new JButton("easy" );
-    private final JButton medium = new JButton("medium");
-    private final JButton hard = new JButton("hard");
+    private Point mousePoint;
     private boolean IDEasy, IDMedium, IDHard;
     private final GameMode GM = new GameMode();
     private final TextAndImage TA = new TextAndImage();
-    private Point mousePoint;
-    private final Font CourierNew = new Font("Courier New", Font.BOLD, 45);
+    private final Font CourierNew = new Font("Courier New", Font.BOLD, 80);
     private final Font ComicSans = new Font("Comic Sans MS",Font.BOLD, 74);
-
-
 
     public DrawPanel() {
         this.addMouseListener(this);
         introScreen = true;
     }
-
     protected void paintComponent(Graphics g) {
         g.setFont(ComicSans);
         startingScreen(g);
@@ -36,7 +26,7 @@ class DrawPanel extends JPanel implements MouseListener {
         }
         else {
             removeIntro();
-            ModePanel MP = new ModePanel(GM.getMode());
+            ModePanel MP = new ModePanel();
         }
     }
 
@@ -45,30 +35,22 @@ class DrawPanel extends JPanel implements MouseListener {
         g.drawString("A", 160, 90);//achievement
         g.drawString("L",1720, 90);//loudness
         g.drawString("S", 1820, 90);//setting
-        draw(TA.backpack(), g);
-        draw(TA.achievement(), g);
-        draw(TA.setting(), g);
-        draw(TA.sound(), g);
+        Clickables.draw(TA.backpack(), g);
+        Clickables.draw(TA.achievement(), g);
+        Clickables.draw(TA.setting(), g);
+        Clickables.draw(TA.sound(), g);
     }
 
     private void drawIntroScreen() {
         easy();
         medium();
         hard();
-        IDEasy = false;
-        IDMedium = false;
-        IDHard = false;
     }
 
     private void removeIntro() {
         introScreen = false;
-        easy.setVisible(false);
-        medium.setVisible(false);
-        hard.setVisible(false);
         TA.closeInto();
-
     }
-
 
 
     public void mouseClicked(MouseEvent c) {
@@ -79,21 +61,18 @@ class DrawPanel extends JPanel implements MouseListener {
             {
                 System.out.println("left  click at " + info);
             }
-            if (detectRectangle(TA.backpack(), info)) {
-                backpack(getGraphics(), true);
-                Rectangle b = new Rectangle(500, 300, 30, 20);
-                check = !detectRectangle(b, info);
+            if (Clickables.detectRectangle(TA.backpack(), info)) {
+                backpack(getGraphics());
             }
-            if (detectRectangle(TA.achievement(), info)) {
-                achievement();
+            if (Clickables.detectRectangle(TA.achievement(), info)) {
+                achievement(getGraphics());
             }
-            if (detectRectangle(TA.sound(), info)) {
-                sound();
+            if (Clickables.detectRectangle(TA.sound(), info)) {
+                sound(getGraphics());
             }
-            if (detectRectangle(TA.setting(),info)) {
-                setting();
+            if (Clickables.detectRectangle(TA.setting(),info)) {
+                setting(getGraphics());
             }
-
         }
 // right
         if (c.getButton() == 3) {
@@ -102,35 +81,77 @@ class DrawPanel extends JPanel implements MouseListener {
         }
     }
 
-
-    public void achievement(){
-        System.out.println("achievement opened");
+    public void achievement(Graphics achievement){
+        System.out.println("Achivement opened");
+        boolean show = true;
+        int counter = 0;
+        while (show){
+            achievement.drawRect(170,50,500,300);
+            achievement.setColor(new Color(0xC78F8F));
+            achievement.setFont(CourierNew);
+            achievement.drawString("Achivement", 170, 200);
+            this.repaint();
+            counter ++;
+            if (counter > 10000){
+                show = false;
+                System.out.println("Achivement closed");
+            }
+        }
     }
-
-    public void sound(){
+    public void sound(Graphics sound){
         System.out.println("sound opened");
-    }
-
-    public void setting(){
-        System.out.println("setting opened");
-    }
-
-    public void backpack(Graphics a, boolean t){
-        while (t) {
-            a.fillRect(30, 20, 500, 300);
-            a.setColor(Color.LIGHT_GRAY);
-            a.getClipBounds();
-            a.setFont(CourierNew);
-            a.drawString("Backpack",220,100);
-            System.out.println("backpack");
-
-            if (check){
-                t = false;
+        boolean show = true;
+        int counter = 0;
+        while (show) {
+            sound.drawRect(1100, 50, 500, 300);
+            sound.setColor(new Color(0x98C497));
+            sound.setFont(CourierNew);
+            sound.drawString("Sound", 1200, 200);
+            this.repaint();
+            counter++;
+            if (counter > 10000) {
+                show = false;
+                System.out.println("sound closed");
             }
         }
 
     }
 
+    public void setting(Graphics setting){
+        System.out.println("setting opened");
+        boolean show = true;
+        int counter = 0;
+        while (show) {
+            setting.drawRect(1400, 50, 500, 300);
+            setting.setColor(new Color(0xD296CA));
+            setting.setFont(CourierNew);
+            setting.drawString("setting", 1500, 200);
+            this.repaint();
+            counter++;
+            if (counter > 10000) {
+                show = false;
+                System.out.println("sound closed");
+            }
+        }
+    }
+
+    public void backpack(Graphics backpack) {
+        System.out.println("backpack opened");
+        int counter = 0;
+        boolean show = true;
+        while (show) {
+            backpack.drawRect(50, 50, 500, 300);
+            backpack.setColor(new Color(0x6969C6));
+            backpack.setFont(CourierNew);
+            backpack.drawString("Backpack", 50, 200);
+            this.repaint();
+            counter++;
+            if (counter > 12000) {
+                show = false;
+                System.out.println("backpack closed");
+            }
+        }
+    }
 
 
     public void mouseReleased(MouseEvent r) {
@@ -142,71 +163,39 @@ class DrawPanel extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent ex) {
     }
 
-    public static boolean intro() {
-        return introScreen;
-    }
-
     public void mousePressed(MouseEvent p) {
         if ((p.getButton() == 3))  {
-            introScreen = false;
-
+            removeIntro();
             if (IDEasy) {
                 System.out.println("Easy pressed");
-                easy.setText("");
                 GM.setEasy();
             }
             if (IDMedium) {
                 System.out.println("Medium pressed");
-                medium.setText("");
                 GM.setMedium();
             }
             if (IDHard) {
                 System.out.println("Hard pressed");
-                hard.setText("");
                 GM.setHard();
+                introScreen = false;
             }
         }
     }
 
-    public void easy() {
-        //Code for one of the buttons.
-        easy.setBounds(250, 200, 335, 80);
-        easy.addMouseListener(this);
-//        easy.addActionListener(what);
-        this.add(easy);
 
+    public void easy() {
+        TA.getEasy().addMouseListener(this);
+        this.add(TA.getEasy());
     }
 
     public void medium() {
-        medium.setBounds(250, 400, 335, 80);
-        medium.addMouseListener(this);
-        this.add(medium);
+        TA.getMedium().addMouseListener(this);
+        this.add(TA.getMedium());
     }
 
     public void hard() {
-        hard.setBounds(250, 600, 335, 80);
-        hard.addMouseListener(this);
-        this.add(hard);
+        TA.getHard().addMouseListener(this);
+        this.add(TA.getHard());
     }
-
-
-    //    TO MAKE MY LIFE WAY EASIER
-    public void draw(Rectangle r, Graphics g) {
-        int x = (int) r.getX();
-        int y = (int) r.getY();
-        int height = (int) r.getHeight();
-        int width = (int) r.getWidth();
-        g.drawRect(x, y, width, height);
-    }
-
-    public boolean detectRectangle(Rectangle r, Point mouse) {
-        return (mouse.x >= r.x && mouse.x <= r.x + r.width) && (mouse.y >= r.y && mouse.y <= r.y + r.height);
-    }
-
-
-
-//    private PointerInfo pointer(MouseEvent e){
-//        return MouseInfo.getPointerInfo();
-//    }
 
 }
