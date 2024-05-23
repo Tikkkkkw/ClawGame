@@ -1,12 +1,12 @@
 import java.util.ArrayList;
+/*Responsible for each of the game mode things, the differences between each level. Getting each of the prizes
+* from the different boxes*/
 
 public class GameMode {
     private static String mode;
     private boolean easy;
     private boolean medium;
     private boolean hard;
-    private boolean picked;
-    private boolean solved ;
     private ArrayList<String> boxLock;
     public GameMode(){}
     public static String getMode() {
@@ -37,21 +37,5 @@ public class GameMode {
         medium = false;
         System.out.println("Game set to hard");
         mode = "hard";
-    }
-
-    public boolean isPickedup() {
-        return picked;
-    }
-
-    public void setPickedup(boolean pickedup) {
-        this.picked = pickedup;
-    }
-
-    public boolean isSolved() {
-        return solved;
-    }
-
-    public void setSolved(boolean solved) {
-        this.solved = solved;
     }
 }

@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+/*Frames, that shifts which one of the panels is opened, and which one are closed. */
 
 public class MainFrame extends JFrame implements Runnable {
 

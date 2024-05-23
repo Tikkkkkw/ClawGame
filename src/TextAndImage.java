@@ -1,18 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+/*All the texts for the game, and the sprite creation and detection.
+* Might merge into the individual classes */
 public class TextAndImage {
     private Rectangle Backpack;
     private Rectangle Achievement;
     private Rectangle Setting;
     private Rectangle Sound;
+    private static Rectangle BackpackCalled;
+    private static Rectangle AchievementCalled;
+    private static Rectangle SettingCalled;
+    private static Rectangle SoundCalled;
     private final JButton easy = new JButton("easy" );
     private final JButton medium = new JButton("medium");
     private final JButton hard = new JButton("hard");
     private String imageFileName;
     private BufferedImage image;
-
+    private Claw claw;
 
 
     public TextAndImage() {
@@ -23,8 +28,8 @@ public class TextAndImage {
         Achievement = new Rectangle(150, y, length, length);
         Sound = new Rectangle(1810, y, length, length);
         Setting = new Rectangle(1700, y, length, length);
-
         this.imageFileName = "image/claw";
+
     }
     public JButton getEasy() {
         easy.setBounds(250, 200, 335, 80);
@@ -53,7 +58,22 @@ public class TextAndImage {
     public Rectangle setting() {
         return Setting;
     }
-//    public Rectangle close()
+
+    public static Rectangle openedBackpack(){
+        BackpackCalled = new Rectangle(170,50,500,300);
+        return BackpackCalled;
+    }
+    public static Rectangle openedAchievement(){
+        return null;
+    }
+    public static Rectangle openedSound(){
+        return null;
+    }
+    public static Rectangle openedSetting(){
+        return null;
+    }
+
+
 
 
     public void closeInto(){

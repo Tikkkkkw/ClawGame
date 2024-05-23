@@ -1,4 +1,7 @@
 public class MiniGames {
+/*Will add if time
+*
+* The minigames, At least one per mode. One of the things inside the boxed*/
 
 
 }

@@ -6,8 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.util.Objects;
-
-
+/* Generates the box's images and sets the boarder and other box attributes. */
 public class Boxed {
     private String mode;
     private String type;
@@ -19,7 +18,6 @@ public class Boxed {
     private Rectangle cardBox;
     private boolean solved;
 
-
     public Boxed(String mode , String color, String type){
         this.mode = mode;
         this.color = color;
@@ -30,8 +28,6 @@ public class Boxed {
 //        this.image = readImage();
 //        this.cardBox = new Rectangle(-100,-100,image.getWidth(),image.getHeight());
         this.solved = false;
-
-
     }
 
     public Boxed() {

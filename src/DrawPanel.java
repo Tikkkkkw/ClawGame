@@ -2,10 +2,12 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
-
+/*Focused on the relationship and the reactions of the
+objects and rectangle on screen when they are being clicked. (introscreen, buttons, menus)*/
 class DrawPanel extends JPanel implements MouseListener {
-//  Only for the relationship and interaction of Things.
+
     private static boolean introScreen;
+    private boolean show;
     private Point mousePoint;
     private boolean IDEasy, IDMedium, IDHard;
     private final GameMode GM = new GameMode();
@@ -46,12 +48,10 @@ class DrawPanel extends JPanel implements MouseListener {
         medium();
         hard();
     }
-
     private void removeIntro() {
         introScreen = false;
         TA.closeInto();
     }
-
 
     public void mouseClicked(MouseEvent c) {
         mousePoint = c.getPoint();
@@ -73,66 +73,68 @@ class DrawPanel extends JPanel implements MouseListener {
             if (Clickables.detectRectangle(TA.setting(),info)) {
                 setting(getGraphics());
             }
+//            if(Clickables.detectRectangle(TextAndImage.openedBackpack(), info)){
+//                show = false;
+//            }
         }
 // right
         if (c.getButton() == 3) {
             System.out.println("Right click at " + info);
-            this.repaint();
         }
     }
 
     public void achievement(Graphics achievement){
         System.out.println("Achivement opened");
-        boolean show = true;
-        int counter = 0;
-        while (show){
-            achievement.drawRect(170,50,500,300);
-            achievement.setColor(new Color(0xC78F8F));
-            achievement.setFont(CourierNew);
-            achievement.drawString("Achivement", 170, 200);
-            this.repaint();
-            counter ++;
-            if (counter > 10000){
-                show = false;
-                System.out.println("Achivement closed");
-            }
-        }
+//        boolean show = true;
+//        int counter = 0;
+//        while (show){
+//            TextAndImage.openedBackpack();
+//            achievement.setColor(new Color(0xC78F8F));
+//            achievement.setFont(CourierNew);
+//            achievement.drawString("Achivement", 170, 200);
+//            this.repaint();
+//            counter ++;
+//            if (counter == 10000){
+//                show = false;
+//                System.out.println("Achivement closed");
+//            }
+//        }
     }
     public void sound(Graphics sound){
         System.out.println("sound opened");
-        boolean show = true;
-        int counter = 0;
-        while (show) {
-            sound.drawRect(1100, 50, 500, 300);
-            sound.setColor(new Color(0x98C497));
-            sound.setFont(CourierNew);
-            sound.drawString("Sound", 1200, 200);
-            this.repaint();
-            counter++;
-            if (counter > 10000) {
-                show = false;
-                System.out.println("sound closed");
-            }
-        }
+//        boolean show = true;
+//        int counter = 0;
+//        while (show) {
+//            sound.drawRect(1100, 50, 500, 300);
+//            sound.setColor(new Color(0x98C497));
+//            sound.setFont(CourierNew);
+//            sound.drawString("Sound", 1200, 200);
+//            counter++;
+//            this.repaint();
+//            if (counter == 10000) {
+//                show = false;
+//                System.out.println("sound closed");
+//            }
+//        }
 
     }
 
     public void setting(Graphics setting){
         System.out.println("setting opened");
-        boolean show = true;
-        int counter = 0;
-        while (show) {
-            setting.drawRect(1400, 50, 500, 300);
-            setting.setColor(new Color(0xD296CA));
-            setting.setFont(CourierNew);
-            setting.drawString("setting", 1500, 200);
-            this.repaint();
-            counter++;
-            if (counter > 10000) {
-                show = false;
-                System.out.println("sound closed");
-            }
-        }
+//        boolean show = true;
+//        int counter = 0;
+//        while (show) {
+//            setting.drawRect(1400, 50, 500, 300);
+//            setting.setColor(new Color(0xD296CA));
+//            setting.setFont(CourierNew);
+//            setting.drawString("setting", 1500, 200);
+//            this.repaint();
+//            counter++;
+//            if (counter == 10000) {
+//                show = false;
+//                System.out.println("sound closed");
+//            }
+//        }
     }
 
     public void backpack(Graphics backpack) {
@@ -146,7 +148,7 @@ class DrawPanel extends JPanel implements MouseListener {
             backpack.drawString("Backpack", 50, 200);
             this.repaint();
             counter++;
-            if (counter > 12000) {
+            if (counter == 12000) {
                 show = false;
                 System.out.println("backpack closed");
             }
