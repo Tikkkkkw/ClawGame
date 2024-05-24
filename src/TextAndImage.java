@@ -8,7 +8,7 @@ public class TextAndImage {
     private Rectangle Achievement;
     private Rectangle Setting;
     private Rectangle Sound;
-    private static Rectangle BackpackCalled;
+    private Rectangle BackpackCalled;
     private static Rectangle AchievementCalled;
     private static Rectangle SettingCalled;
     private static Rectangle SoundCalled;
@@ -28,6 +28,7 @@ public class TextAndImage {
         Achievement = new Rectangle(150, y, length, length);
         Sound = new Rectangle(1810, y, length, length);
         Setting = new Rectangle(1700, y, length, length);
+        BackpackCalled = new Rectangle(170,50,500,300);
         this.imageFileName = "image/claw";
 
     }
@@ -59,8 +60,7 @@ public class TextAndImage {
         return Setting;
     }
 
-    public static Rectangle openedBackpack(){
-        BackpackCalled = new Rectangle(170,50,500,300);
+    public Rectangle openedBackpack(){
         return BackpackCalled;
     }
     public static Rectangle openedAchievement(){

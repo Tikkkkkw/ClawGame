@@ -7,7 +7,8 @@ objects and rectangle on screen when they are being clicked. (introscreen, butto
 class DrawPanel extends JPanel implements MouseListener {
 
     private static boolean introScreen;
-    private boolean show;
+    private boolean showBackpack;
+    private boolean show = true;
     private Point mousePoint;
     private boolean IDEasy, IDMedium, IDHard;
     private final GameMode GM = new GameMode();
@@ -18,13 +19,24 @@ class DrawPanel extends JPanel implements MouseListener {
     public DrawPanel() {
         this.addMouseListener(this);
         introScreen = true;
+        showBackpack = false;
     }
     protected void paintComponent(Graphics g) {
+
+        super.repaint();
         g.setFont(ComicSans);
         startingScreen(g);
 
         if (introScreen) {
+
             drawIntroScreen();
+            if (showBackpack) {
+                System.out.println("testing");
+                g.drawRect(50, 50, 500, 300);
+                g.setColor(new Color(0x6969C6));
+                g.setFont(CourierNew);
+                g.drawString("Backpack", 50, 200);
+            }
         }
         else {
             removeIntro();
@@ -44,9 +56,9 @@ class DrawPanel extends JPanel implements MouseListener {
     }
 
     private void drawIntroScreen() {
-        easy();
-        medium();
-        hard();
+//        easy();
+//        medium();
+//        hard();
     }
     private void removeIntro() {
         introScreen = false;
@@ -62,7 +74,9 @@ class DrawPanel extends JPanel implements MouseListener {
                 System.out.println("left  click at " + info);
             }
             if (Clickables.detectRectangle(TA.backpack(), info)) {
+                System.out.println(getGraphics());
                 backpack(getGraphics());
+                showBackpack = !showBackpack;
             }
             if (Clickables.detectRectangle(TA.achievement(), info)) {
                 achievement(getGraphics());
@@ -73,9 +87,9 @@ class DrawPanel extends JPanel implements MouseListener {
             if (Clickables.detectRectangle(TA.setting(),info)) {
                 setting(getGraphics());
             }
-//            if(Clickables.detectRectangle(TextAndImage.openedBackpack(), info)){
-//                show = false;
-//            }
+            if(Clickables.detectRectangle(TA.openedBackpack(), info)){
+                show = false;
+            }
         }
 // right
         if (c.getButton() == 3) {
@@ -121,38 +135,33 @@ class DrawPanel extends JPanel implements MouseListener {
 
     public void setting(Graphics setting){
         System.out.println("setting opened");
-//        boolean show = true;
-//        int counter = 0;
-//        while (show) {
-//            setting.drawRect(1400, 50, 500, 300);
-//            setting.setColor(new Color(0xD296CA));
-//            setting.setFont(CourierNew);
-//            setting.drawString("setting", 1500, 200);
-//            this.repaint();
-//            counter++;
-//            if (counter == 10000) {
-//                show = false;
-//                System.out.println("sound closed");
-//            }
-//        }
+        boolean show = true;
+        int counter = 0;
+        while (show) {
+            setting.drawRect(1400, 50, 500, 300);
+            setting.setColor(new Color(0xD296CA));
+            setting.setFont(CourierNew);
+            setting.drawString("setting", 1500, 200);
+            this.repaint();
+            counter++;
+            if (counter == 10000) {
+                show = false;
+                System.out.println("sound closed");
+            }
+        }
     }
 
     public void backpack(Graphics backpack) {
-        System.out.println("backpack opened");
-        int counter = 0;
-        boolean show = true;
-        while (show) {
+//        System.out.println("backpack opened");
+//        System.out.println(backpack);
+
+            Clickables.draw(TA.backpack(), backpack);
+            System.out.println("Drawing rectangle backpack");
             backpack.drawRect(50, 50, 500, 300);
             backpack.setColor(new Color(0x6969C6));
             backpack.setFont(CourierNew);
             backpack.drawString("Backpack", 50, 200);
             this.repaint();
-            counter++;
-            if (counter == 12000) {
-                show = false;
-                System.out.println("backpack closed");
-            }
-        }
     }
 
 
