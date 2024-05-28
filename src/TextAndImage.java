@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 /*All the texts for the game, and the sprite creation and detection.
@@ -8,13 +7,13 @@ public class TextAndImage {
     private Rectangle Achievement;
     private Rectangle Setting;
     private Rectangle Sound;
-    private Rectangle BackpackCalled;
+    private static Rectangle BackpackCalled;
     private static Rectangle AchievementCalled;
     private static Rectangle SettingCalled;
     private static Rectangle SoundCalled;
-    private final JButton easy = new JButton("easy" );
-    private final JButton medium = new JButton("medium");
-    private final JButton hard = new JButton("hard");
+    private Rectangle easy;
+    private Rectangle medium;
+    private Rectangle hard;
     private String imageFileName;
     private BufferedImage image;
     private Claw claw;
@@ -24,28 +23,27 @@ public class TextAndImage {
 
         int y = 20;
         int length = 80;
+        easy = new Rectangle(250, 200, 335, 80);
+        medium = new Rectangle(250, 400, 335, 80);
+        hard = new Rectangle(250, 600, 335, 80);
+
         Backpack = new Rectangle(30, y, length, length);
         Achievement = new Rectangle(150, y, length, length);
         Sound = new Rectangle(1810, y, length, length);
         Setting = new Rectangle(1700, y, length, length);
-        BackpackCalled = new Rectangle(170,50,500,300);
+
+        BackpackCalled = new Rectangle(70,50,500,300);
+        AchievementCalled = new Rectangle(200, 50, 500, 300);
+        SoundCalled = new Rectangle(1100, 50, 500, 300);
+        SettingCalled = new Rectangle(1400, 50, 500, 300);
         this.imageFileName = "image/claw";
 
     }
-    public JButton getEasy() {
-        easy.setBounds(250, 200, 335, 80);
-        return easy;
-    }
+    public Rectangle easy() {return easy;}
 
-    public JButton getMedium() {
-        medium.setBounds(250, 400, 335, 80);
-        return medium;
-    }
+    public Rectangle medium() {return medium;}
 
-    public JButton getHard() {
-        hard.setBounds(250, 600, 335, 80);
-        return hard;
-    }
+    public Rectangle hard() {return hard;}
 
     public Rectangle backpack() {
         return Backpack;
@@ -60,29 +58,23 @@ public class TextAndImage {
         return Setting;
     }
 
-    public Rectangle openedBackpack(){
+    public static Rectangle openedBackpack(){
         return BackpackCalled;
     }
     public static Rectangle openedAchievement(){
-        return null;
+        return AchievementCalled;
     }
     public static Rectangle openedSound(){
-        return null;
+        return SoundCalled;
     }
     public static Rectangle openedSetting(){
-        return null;
+        return SettingCalled;
     }
 
 
 
 
     public void closeInto(){
-        easy.setText("");
-        medium.setText("");
-        hard.setText("");
-        easy.setVisible(false);
-        medium.setVisible(false);
-        hard.setVisible(false);
     }
 
 
