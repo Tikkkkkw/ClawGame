@@ -6,13 +6,14 @@ import java.io.IOException;
 /*Generates the Claw's images, and it's boarder and attributes and movements based on keyboard(or mouse)*/
 public class Claw {
     private String imageFileName;
-    private BufferedImage image;
+    private String image;
     private Rectangle clawDetection;
 
     public Claw(){
-        imageFileName = "image/claw";
-        image = claw(imageFileName);
+
     }
+
+
     public BufferedImage claw (String imageFileName){
         try{
             BufferedImage i;
@@ -23,8 +24,8 @@ public class Claw {
         }
         return null;
     }
-    public BufferedImage getImage(){
-        return image;
+    public String getImage(){
+        return imageFileName;
     }
 
 

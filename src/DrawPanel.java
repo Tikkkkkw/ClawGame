@@ -11,7 +11,7 @@ Move screen after click to force update
 
 class DrawPanel extends JPanel implements MouseListener {
 
-    private static boolean introScreen;
+    private static boolean introScreen, load;
     private boolean showBackpack, showAchivements, showSettings, showAudio;
     private Point mousePoint;
     private boolean IDEasy, IDMedium, IDHard;
@@ -24,21 +24,35 @@ class DrawPanel extends JPanel implements MouseListener {
         this.addMouseListener(this);
         introScreen = true;
         showBackpack = false;
+        load = true;
     }
 
     protected void paintComponent(Graphics g) {
 
-        super.repaint();
+
         g.setFont(ComicSans);
         startingScreen(g);
+        super.repaint();
 
-        if (introScreen) {drawIntroScreen(g);}
+        if (introScreen) {
+            drawIntroScreen(g);
+        }
+
         else {
+            load = false;
             if (showBackpack) {backpack(g);}
             if (showAchivements) {achievement(g);}
             if (showAudio) {sound(g);}
             if (showSettings){setting(g);}
         }
+
+       while (load){
+           g.setColor(new Color(0x83838D));
+           g.fillRect(0, 0, 5200, 5200);
+           Clickables.draw(GM.getLoading(), g);
+       }
+
+
     }
 
     public void startingScreen(Graphics g) {
@@ -51,6 +65,7 @@ class DrawPanel extends JPanel implements MouseListener {
         Clickables.draw(TA.achievement(), g);
         Clickables.draw(TA.setting(), g);
         Clickables.draw(TA.sound(), g);
+
     }
 
     private void drawIntroScreen(Graphics g) {
@@ -74,18 +89,25 @@ class DrawPanel extends JPanel implements MouseListener {
             if (Clickables.detectRectangle(TA.backpack(), info)) {
                 backpack(getGraphics());
                 showBackpack = !showBackpack;
+                repaint();
             }
             if (Clickables.detectRectangle(TA.achievement(), info)) {
                 achievement(getGraphics());
                 showAchivements = !showAchivements;
+                repaint();
             }
             if (Clickables.detectRectangle(TA.sound(), info)) {
                 sound(getGraphics());
                 showAudio = !showAudio;
+                repaint();
             }
             if (Clickables.detectRectangle(TA.setting(), info)) {
                 setting(getGraphics());
                 showSettings = !showSettings;
+                repaint();
+            }
+            if(Clickables.detectRectangle(GM.getLoading(), info)){
+                load = false;
             }
         }
 

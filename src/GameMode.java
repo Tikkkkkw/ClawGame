@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 /*Responsible for each of the game mode things, the differences between each level. Getting each of the prizes
 * from the different boxes*/
@@ -8,7 +9,14 @@ public class GameMode {
     private boolean medium;
     private boolean hard;
     private ArrayList<String> boxLock;
-    public GameMode(){}
+    private Rectangle loading;
+
+    public Rectangle getLoading() {return loading;}
+
+    public GameMode(){
+
+        loading = new Rectangle(0, 0, 5200, 5200);
+    }
     public static String getMode() {
         return mode;
     }

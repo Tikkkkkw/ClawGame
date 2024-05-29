@@ -8,7 +8,6 @@ import java.util.ArrayList;
 * the actual game play detections, */
 class ModePanel extends JPanel implements KeyListener {
 
-
     private ArrayList<Boxed> b;
     private Claw claw;
     private Boxed box;
@@ -22,28 +21,15 @@ class ModePanel extends JPanel implements KeyListener {
     }
 
     private void aClaw(){
-        Graphics gr = claw.getImage().getGraphics();
-        print(gr);
     }
 
     public void returnBox(){
         System.out.println(b);
 
     }
-    public boolean isPickedup() {
-        return picked;
-    }
+    public void pickedup(boolean picked){
 
-    public void setPickedup(boolean pickedup) {
-        this.picked = pickedup;
-    }
 
-    public boolean isSolved() {
-        return solved;
-    }
-
-    public void setSolved(boolean solved) {
-        this.solved = solved;
     }
     public void keyTyped(KeyEvent e) {
     }
