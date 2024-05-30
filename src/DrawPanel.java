@@ -4,11 +4,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 /*Focused on the relationship and the reactions of the
 objects and rectangle on screen when they are being clicked. (introscreen, buttons, menus)*/
-
-/*
-Move screen after click to force update
-*/
-
 class DrawPanel extends JPanel implements MouseListener {
 
     private static boolean introScreen, load;
@@ -19,42 +14,50 @@ class DrawPanel extends JPanel implements MouseListener {
     private final TextAndImage TA = new TextAndImage();
     private final Font CourierNew = new Font("Courier New", Font.BOLD, 80);
     private final Font ComicSans = new Font("Comic Sans MS", Font.BOLD, 74);
-
+    private final Font BookAntiqa = new Font("Book Antiqua", Font.ITALIC, 50);
     public DrawPanel() {
+        System.out.println("Out");
         this.addMouseListener(this);
-        introScreen = true;
-        showBackpack = false;
         load = true;
+        introScreen = true;
     }
 
     protected void paintComponent(Graphics g) {
-
-
+        super.paintComponent(g);
         g.setFont(ComicSans);
         startingScreen(g);
-        super.repaint();
 
         if (introScreen) {
             drawIntroScreen(g);
         }
-
-        else {
-            load = false;
+        if (!introScreen){
             if (showBackpack) {backpack(g);}
             if (showAchivements) {achievement(g);}
             if (showAudio) {sound(g);}
             if (showSettings){setting(g);}
         }
-
-       while (load){
-           g.setColor(new Color(0x83838D));
-           g.fillRect(0, 0, 5200, 5200);
-           Clickables.draw(GM.getLoading(), g);
-       }
-
-
+        if (load){
+            g.setColor(new Color(0x5A899F));
+            g.fillRect(0, 0, 5200, 5200);
+            Clickables.draw(GM.getLoading(), g);
+            g.setColor(Color.pink);
+            g.drawString("Loading screen", 140, 200);
+            loads(g);
+        }
     }
-
+    public void loads(Graphics g) {
+        g.setFont(BookAntiqa);
+        g.setColor(new Color(0x885E5E));
+        if (IDEasy){
+            g.drawString("easy mode easy mode easy mode easy mode", 10, 400);
+        }
+        if (IDMedium){
+            g.drawString("medium mode medium mode, medium mode", 10, 400);
+        }
+        if (IDHard){
+            g.drawString("it's aha-rd mode woo! GL", 50, 400);
+        }
+    }
     public void startingScreen(Graphics g) {
         g.drawString("B", 45, 90); //backpack
         g.drawString("A", 160, 90);//achievement
@@ -112,9 +115,9 @@ class DrawPanel extends JPanel implements MouseListener {
         }
 
         if (introScreen) {
-            if (Clickables.detectRectangle(TA.easy(), info)) {easy();}
-            if (Clickables.detectRectangle(TA.medium(), info)) {medium();}
-            if (Clickables.detectRectangle(TA.hard(), info)) {hard();}
+            if (Clickables.detectRectangle(TA.easy(), info)) {easy(); load = true;}
+            if (Clickables.detectRectangle(TA.medium(), info)) {medium();load = true;}
+            if (Clickables.detectRectangle(TA.hard(), info)) {hard();load = true;}
         }
 // right
         if (c.getButton() == 3) {
@@ -130,17 +133,17 @@ class DrawPanel extends JPanel implements MouseListener {
     }
 
     public void sound(Graphics sound) {
-            Clickables.draw(TextAndImage.openedSound(),sound);
-            sound.setColor(new Color(0x98C497));
-            sound.setFont(CourierNew);
-            sound.drawString("Sound", 1200, 200);
-    }
 
+   Clickables.draw(TextAndImage.openedSetting(), sound);
+            sound.setColor(new Color(0xD296CA));
+            sound.setFont(CourierNew);
+            sound.drawString("setting", 1500, 200);
+}
     public void setting(Graphics setting) {
-            Clickables.draw(TextAndImage.openedSetting(), setting);
-            setting.setColor(new Color(0xD296CA));
-            setting.setFont(CourierNew);
-            setting.drawString("setting", 1500, 200);
+        Clickables.draw(TextAndImage.openedSound(),setting);
+        setting.setColor(new Color(0x98C497));
+        setting.setFont(CourierNew);
+        setting.drawString("Sound", 1200, 200);
     }
 
     public void backpack(Graphics backpack) {

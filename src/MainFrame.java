@@ -13,10 +13,6 @@ public class MainFrame extends JFrame implements Runnable {
         int frameHeight = getMaximumSize().height;
         p = new DrawPanel();
         this.add(p);
-//        if (!DrawPanel.intro()) {
-//        mode = new modePanel();
-//        this.add(mode);
-//        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
         this.setLocation(0, 0);

@@ -71,6 +71,10 @@ public class TextAndImage {
         return SettingCalled;
     }
 
+    public String gameHints(){
+        int i ;
+        return null;
+    }
 
 
 
