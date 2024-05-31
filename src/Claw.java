@@ -1,33 +1,29 @@
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 /*Generates the Claw's images, and it's boarder and attributes and movements based on keyboard(or mouse)*/
 public class Claw {
-    private String imageFileName;
-    private String image;
-    private Rectangle clawDetection;
 
+    private BufferedImage original;
+    private String ORIGINAL_CLAW = "image/claw.png";
     public Claw(){
-
+        original = loadImage(ORIGINAL_CLAW);
     }
 
-
-    public BufferedImage claw (String imageFileName){
+    public BufferedImage loadImage (String imageFileName){
         try{
-            BufferedImage i;
-            i = ImageIO.read(new File(imageFileName));
-            return i;
-        } catch (IOException e) {
-            System.out.println(e);
+            BufferedImage image;
+            image = ImageIO.read(new File(imageFileName));
+            return image;
         }
-        return null;
-    }
-    public String getImage(){
-        return imageFileName;
+        catch (IOException e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
+    public BufferedImage getImage(){return original;}
 
 }
 

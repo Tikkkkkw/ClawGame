@@ -1,4 +1,5 @@
 public class Objects {
+    // Might not need this lol
     private String modes;
     // music 1
     // wallpaper 1

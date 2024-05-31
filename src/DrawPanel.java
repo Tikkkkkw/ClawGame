@@ -16,7 +16,6 @@ class DrawPanel extends JPanel implements MouseListener {
     private final Font ComicSans = new Font("Comic Sans MS", Font.BOLD, 74);
     private final Font BookAntiqa = new Font("Book Antiqua", Font.ITALIC, 50);
     public DrawPanel() {
-        System.out.println("Out");
         this.addMouseListener(this);
         load = true;
         introScreen = true;

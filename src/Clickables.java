@@ -1,9 +1,9 @@
 import java.awt.*;
 /*class for only static methods, it will be called by both DrawPanel and ModePanel, also it will be a parent class for
-* Some classes that's only sprites. Maybe (might merge into classes) */
+Gonna add the keyboard movement into this. IF works;
+* * Some classes that's only sprites. Maybe (might merge into classes) */
+
 public class Clickables extends Rectangle {
-
-
 
     public static void draw(Rectangle r, Graphics g) {
         int x = (int) r.getX();

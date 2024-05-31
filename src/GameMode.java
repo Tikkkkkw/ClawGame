@@ -4,46 +4,42 @@ import java.util.ArrayList;
 * from the different boxes*/
 
 public class GameMode {
-    private static String mode;
-    private boolean easy;
-    private boolean medium;
-    private boolean hard;
+    private static String modeSet;
+    private static int modeValue;
     private ArrayList<String> boxLock;
     private Rectangle loading;
 
     public Rectangle getLoading() {return loading;}
 
     public GameMode(){
-
         loading = new Rectangle(0, 0, 5200, 5200);
+        modeSet = null;
+        modeValue = 0;
     }
+
     public static String getMode() {
-        return mode;
+        return modeSet;
     }
+    public static int getModeValue(){return modeValue;}
+
 
 
 
     public void setEasy() {
-        easy = true;
-        medium = false;
-        hard = false;
+        modeValue = 1;
         System.out.println("Game set to easy");
-        mode = "easy";
+        modeSet = "easy";
     }
 
     public void setMedium() {
-        medium = true;
-        easy = false;
-        hard = false;
+        modeValue = 2;
         System.out.println("Game set to medium");
-        mode = "medium";
+        modeSet = "medium";
     }
 
     public void setHard() {
-        hard = true;
-        easy = false;
-        medium = false;
+        modeValue = 3;
         System.out.println("Game set to hard");
-        mode = "hard";
+        modeSet = "hard";
     }
 }
