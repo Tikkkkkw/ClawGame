@@ -7,7 +7,6 @@ import java.util.ArrayList;
 * MUST BE DONE FOR AT LEAST ONE MODE
 * the actual game play detections, */
 class ModePanel extends JPanel implements KeyListener {
-    private ArrayList<Boxed> b;
     private Claw claw;
     private Boxed box;
     private String mode;
@@ -18,8 +17,7 @@ class ModePanel extends JPanel implements KeyListener {
         game = true;
         mode = GameMode.getMode();
         claw = new Claw();
-        b = Boxed.getBox();
-        this.addKeyListener(this);
+//        box = new Boxed();
     }
     public boolean game(){return game;}
     protected void paintComponent(Graphics g){
@@ -28,18 +26,11 @@ class ModePanel extends JPanel implements KeyListener {
     }
 
 
+
     private void claw(Graphics g){
         g.drawImage(claw.getImage(), 200, 200, null);
     }
 
-    public void returnBox(){
-        System.out.println(b);
-
-    }
-    public void pickedup(boolean picked){
-
-
-    }
     public void keyTyped(KeyEvent e) {
     }
 

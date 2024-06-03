@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Objects {
     // Might not need this lol
     private String modes;
@@ -8,5 +10,9 @@ public class Objects {
 public Objects() {
     modes = GameMode.getMode();
 
-}
+
+
+
+    }
+
 }

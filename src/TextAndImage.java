@@ -29,13 +29,13 @@ public class TextAndImage {
 
         Backpack = new Rectangle(30, y, length, length);
         Achievement = new Rectangle(150, y, length, length);
-        Sound = new Rectangle(1810, y, length, length);
-        Setting = new Rectangle(1700, y, length, length);
+        Sound = new Rectangle( 270, y, length, length);
+        Setting = new Rectangle( 390, y, length, length);
 
         BackpackCalled = new Rectangle(70,50,500,300);
         AchievementCalled = new Rectangle(200, 50, 500, 300);
-        SoundCalled = new Rectangle(1100, 50, 500, 300);
-        SettingCalled = new Rectangle(1400, 50, 500, 300);
+        SoundCalled = new Rectangle(340, 50, 500, 300);
+        SettingCalled = new Rectangle(480, 50, 500, 300);
         this.imageFileName = "image/claw";
 
     }
@@ -71,8 +71,27 @@ public class TextAndImage {
         return SettingCalled;
     }
 
-    public String gameHints(){
+    public void startingScreen(Graphics g) {
+        g.drawString("B", 45, 90); //backpack
+        g.drawString("A", 160, 90);//achievement
+        g.drawString("L", 280, 90);//loudness
+        g.drawString("S", 410, 90);//setting
+
+        Clickables.draw(backpack(), g);
+        Clickables.draw(achievement(), g);
+        Clickables.draw(setting(), g);
+        Clickables.draw(sound(), g);
+
+    }
+
+    public void settings(Graphics g) {
+
+    }
+
+
+        public String gameHints(){
         int i ;
+        String [] hints = {"SD","the mouse doesnt work in game","Good Luck", "Sleppy times"};
         return null;
     }
 

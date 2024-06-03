@@ -6,11 +6,15 @@ public class MainFrame extends JFrame implements Runnable {
     private DrawPanel p;
     private ModePanel mode;
     private Thread windowThread;
+    private final int Width = getMaximumSize().width;
+    private final int Height = getMaximumSize().height;
+//    private static final int FrameWidth = 0;
+//    private static final int FrameHeight = 0;
 
     public MainFrame(String display) {
         super(display);
-        int frameWidth = getMaximumSize().width;
-        int frameHeight = getMaximumSize().height;
+        int frameWidth = Width;
+        int frameHeight = Height;
 
         p = new DrawPanel();
         this.add(p);
@@ -22,7 +26,8 @@ public class MainFrame extends JFrame implements Runnable {
         startThread();
 
     }
-
+//    public static int getFrameWidth(){return FrameWidth;}
+//    public static int getFrameHeight(){return FrameHeight;}
     public void startThread() {
         windowThread = new Thread(this);
         windowThread.start();

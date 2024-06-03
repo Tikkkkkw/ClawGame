@@ -48,20 +48,22 @@ class DrawPanel extends JPanel implements MouseListener {
         g.setFont(BookAntiqa);
         g.setColor(new Color(0x885E5E));
         if (IDEasy){
-            g.drawString("easy mode easy mode easy mode easy mode", 10, 400);
+            g.drawString("easy mode easy mode easy mode easy mode easy mode easy mode easy mode easy mode easy mode easy mode", 10, 400);
         }
         if (IDMedium){
-            g.drawString("medium mode medium mode, medium mode", 10, 400);
+            g.drawString("medium mode medium mode medium mode medium mode medium mode medium mode medium mode", 10, 400);
         }
         if (IDHard){
             g.drawString("it's aha-rd mode woo! GL", 50, 400);
+            g.drawString("it's aha-rd mode woo! GL", 90, 440);
+            g.drawString("it's aha-rd mode woo! GL", 1300, 480);
         }
     }
     public void startingScreen(Graphics g) {
         g.drawString("B", 45, 90); //backpack
         g.drawString("A", 160, 90);//achievement
-        g.drawString("L", 1720, 90);//loudness
-        g.drawString("S", 1820, 90);//setting
+        g.drawString("L", 280, 90);//loudness
+        g.drawString("S", 410, 90);//setting
 
         Clickables.draw(TA.backpack(), g);
         Clickables.draw(TA.achievement(), g);
@@ -136,13 +138,13 @@ class DrawPanel extends JPanel implements MouseListener {
    Clickables.draw(TextAndImage.openedSetting(), sound);
             sound.setColor(new Color(0xD296CA));
             sound.setFont(CourierNew);
-            sound.drawString("setting", 1500, 200);
+            sound.drawString("setting", 360, 200);
 }
     public void setting(Graphics setting) {
         Clickables.draw(TextAndImage.openedSound(),setting);
         setting.setColor(new Color(0x98C497));
         setting.setFont(CourierNew);
-        setting.drawString("Sound", 1200, 200);
+        setting.drawString("Sound", 300, 200);
     }
 
     public void backpack(Graphics backpack) {
