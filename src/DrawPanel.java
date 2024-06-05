@@ -28,8 +28,8 @@ class DrawPanel extends JPanel implements MouseListener {
 
         if (introScreen) {
             drawIntroScreen(g);
-        }
-        if (!introScreen){
+//        }
+//        if (!introScreen){
             if (showBackpack) {backpack(g);}
             if (showAchivements) {achievement(g);}
             if (showAudio) {sound(g);}

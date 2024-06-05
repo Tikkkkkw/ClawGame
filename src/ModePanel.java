@@ -28,7 +28,9 @@ class ModePanel extends JPanel implements KeyListener {
 
 
     private void claw(Graphics g){
-        g.drawImage(claw.getImage(), 200, 200, null);
+        claw.clawSkins("RedScape");
+        g.drawImage(claw.getOpenImage(), 200, 200, null);
+
     }
 
     public void keyTyped(KeyEvent e) {
