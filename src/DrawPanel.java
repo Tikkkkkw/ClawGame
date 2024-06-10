@@ -62,7 +62,7 @@ class DrawPanel extends JPanel implements MouseListener {
     public void startingScreen(Graphics g) {
         g.drawString("B", 45, 90); //backpack
         g.drawString("A", 160, 90);//achievement
-        g.drawString("L", 280, 90);//loudness
+        g.drawString("S", 280, 90);//loudness
         g.drawString("S", 410, 90);//setting
 
         Clickables.draw(TA.backpack(), g);
@@ -138,13 +138,13 @@ class DrawPanel extends JPanel implements MouseListener {
    Clickables.draw(TextAndImage.openedSetting(), sound);
             sound.setColor(new Color(0xD296CA));
             sound.setFont(courierNew);
-            sound.drawString("setting", 360, 200);
+            sound.drawString("setting", 460, 200);
 }
     public void setting(Graphics setting) {
         Clickables.draw(TextAndImage.openedSound(),setting);
         setting.setColor(new Color(0x98C497));
         setting.setFont(courierNew);
-        setting.drawString("Sound", 300, 200);
+        setting.drawString("Sound", 400, 200);
     }
 
     public void backpack(Graphics backpack) {
