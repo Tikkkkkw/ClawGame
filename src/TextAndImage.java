@@ -1,23 +1,19 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
+
 /*All the texts for the game, and the sprite creation and detection.
 * Might merge into the individual classes */
 public class TextAndImage {
-    private Rectangle Backpack;
-    private Rectangle Achievement;
-    private Rectangle Setting;
-    private Rectangle Sound;
-    private static Rectangle BackpackCalled;
-    private static Rectangle AchievementCalled;
-    private static Rectangle SettingCalled;
-    private static Rectangle SoundCalled;
+    private Rectangle backpack;
+    private Rectangle achievement;
+    private Rectangle setting;
+    private Rectangle sound;
+    private static Rectangle backpackCalled;
+    private static Rectangle achievementCalled;
+    private static Rectangle settingCalled;
+    private static Rectangle soundCalled;
     private Rectangle easy;
     private Rectangle medium;
     private Rectangle hard;
-    private String imageFileName;
-    private BufferedImage image;
-    private Claw claw;
-
 
     public TextAndImage() {
 
@@ -27,16 +23,15 @@ public class TextAndImage {
         medium = new Rectangle(250, 400, 335, 80);
         hard = new Rectangle(250, 600, 335, 80);
 
-        Backpack = new Rectangle(30, y, length, length);
-        Achievement = new Rectangle(150, y, length, length);
-        Sound = new Rectangle( 270, y, length, length);
-        Setting = new Rectangle( 390, y, length, length);
+        backpack = new Rectangle(30, y, length, length);
+        achievement = new Rectangle(150, y, length, length);
+        sound = new Rectangle( 270, y, length, length);
+        setting = new Rectangle( 390, y, length, length);
 
-        BackpackCalled = new Rectangle(70,50,500,300);
-        AchievementCalled = new Rectangle(200, 50, 500, 300);
-        SoundCalled = new Rectangle(340, 50, 500, 300);
-        SettingCalled = new Rectangle(480, 50, 500, 300);
-        this.imageFileName = "image/claw";
+        backpackCalled = new Rectangle(70,50,500,300);
+        achievementCalled = new Rectangle(200, 50, 500, 300);
+        soundCalled = new Rectangle(340, 50, 500, 300);
+        settingCalled = new Rectangle(480, 50, 500, 300);
 
     }
     public Rectangle easy() {return easy;}
@@ -46,29 +41,29 @@ public class TextAndImage {
     public Rectangle hard() {return hard;}
 
     public Rectangle backpack() {
-        return Backpack;
+        return backpack;
     }
     public Rectangle achievement() {
-        return Achievement;
+        return achievement;
     }
     public Rectangle sound() {
-        return Sound;
+        return sound;
     }
     public Rectangle setting() {
-        return Setting;
+        return setting;
     }
 
     public static Rectangle openedBackpack(){
-        return BackpackCalled;
+        return backpackCalled;
     }
     public static Rectangle openedAchievement(){
-        return AchievementCalled;
+        return achievementCalled;
     }
     public static Rectangle openedSound(){
-        return SoundCalled;
+        return soundCalled;
     }
     public static Rectangle openedSetting(){
-        return SettingCalled;
+        return settingCalled;
     }
 
     public void startingScreen(Graphics g) {
@@ -81,10 +76,6 @@ public class TextAndImage {
         Clickables.draw(achievement(), g);
         Clickables.draw(setting(), g);
         Clickables.draw(sound(), g);
-
-    }
-
-    public void settings(Graphics g) {
 
     }
 

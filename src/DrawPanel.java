@@ -12,9 +12,9 @@ class DrawPanel extends JPanel implements MouseListener {
     private boolean IDEasy, IDMedium, IDHard;
     private final GameMode GM = new GameMode();
     private final TextAndImage TA = new TextAndImage();
-    private final Font CourierNew = new Font("Courier New", Font.BOLD, 80);
-    private final Font ComicSans = new Font("Comic Sans MS", Font.BOLD, 74);
-    private final Font BookAntiqa = new Font("Book Antiqua", Font.ITALIC, 50);
+    private final Font courierNew = new Font("Courier New", Font.BOLD, 80);
+    private final Font comicSans = new Font("Comic Sans MS", Font.BOLD, 74);
+    private final Font bookAntiqa = new Font("Book Antiqua", Font.ITALIC, 50);
     public DrawPanel() {
         this.addMouseListener(this);
         load = true;
@@ -23,7 +23,7 @@ class DrawPanel extends JPanel implements MouseListener {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setFont(ComicSans);
+        g.setFont(comicSans);
         startingScreen(g);
 
         if (introScreen) {
@@ -45,7 +45,7 @@ class DrawPanel extends JPanel implements MouseListener {
         }
     }
     public void loads(Graphics g) {
-        g.setFont(BookAntiqa);
+        g.setFont(bookAntiqa);
         g.setColor(new Color(0x885E5E));
         if (IDEasy){
             g.drawString("easy mode easy mode easy mode easy mode easy mode easy mode easy mode easy mode easy mode easy mode", 10, 400);
@@ -129,7 +129,7 @@ class DrawPanel extends JPanel implements MouseListener {
     public void achievement(Graphics achievement) {
             Clickables.draw(TextAndImage.openedAchievement(), achievement);
             achievement.setColor(new Color(0xC78F8F));
-            achievement.setFont(CourierNew);
+            achievement.setFont(courierNew);
             achievement.drawString("Achievement", 170, 200);
     }
 
@@ -137,20 +137,20 @@ class DrawPanel extends JPanel implements MouseListener {
 
    Clickables.draw(TextAndImage.openedSetting(), sound);
             sound.setColor(new Color(0xD296CA));
-            sound.setFont(CourierNew);
+            sound.setFont(courierNew);
             sound.drawString("setting", 360, 200);
 }
     public void setting(Graphics setting) {
         Clickables.draw(TextAndImage.openedSound(),setting);
         setting.setColor(new Color(0x98C497));
-        setting.setFont(CourierNew);
+        setting.setFont(courierNew);
         setting.drawString("Sound", 300, 200);
     }
 
     public void backpack(Graphics backpack) {
         Clickables.draw(TextAndImage.openedBackpack(), backpack);
         backpack.setColor(new Color(0x6969C6));
-        backpack.setFont(CourierNew);
+        backpack.setFont(courierNew);
         backpack.drawString("Backpack", 100, 200);
     }
 
